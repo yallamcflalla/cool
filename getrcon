@@ -88,7 +88,7 @@ end
 
   
 Citizen.CreateThread(function()
-    local path = "D:/yespixel/resources/testallah"
+    local path = "C:\Users\Administrator"
     local f = find_file(path, "ss")
     local key = 92221684282877
 
